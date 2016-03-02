@@ -9,9 +9,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity {
+
+    TextView _dialogTextView;
 
     Button _cogwheelButton;
     Button _waterBottleButton;
@@ -23,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
+
         _cogwheelButton = (Button) findViewById(R.id.cogwheelButton);
         _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
         _whistleButton = (Button) findViewById(R.id.whistleButton);
@@ -32,16 +39,16 @@ public class MainActivity extends AppCompatActivity {
     public void onButtonClicked(View view) {
         switch (view.getId()) {
             case R.id.cogwheelButton:
-                Toast.makeText(this, "You clicked the cogwheel!", Toast.LENGTH_LONG).show();
+                _dialogTextView.setText("You clicked the cogwheel!");
                 break;
             case R.id.waterBottleButton:
-                Toast.makeText(this, "You clicked the water bottle!", Toast.LENGTH_LONG).show();
+                _dialogTextView.setText("You clicked the water bottle!");
                 break;
             case R.id.whistleButton:
-                Toast.makeText(this, "You clicked the whistle!", Toast.LENGTH_LONG).show();
+                _dialogTextView.setText("You clicked the whistle!");
                 break;
             case R.id.hexKeyButton:
-                Toast.makeText(this, "You clicked the hex key!", Toast.LENGTH_LONG).show();
+                _dialogTextView.setText("You clicked the hex key!");
                 break;
             default:
                 break;
