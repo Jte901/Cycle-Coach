@@ -18,10 +18,13 @@ public class MainActivity extends AppCompatActivity {
 
     TextView _dialogTextView;
 
+    Button _eyeButton;
     Button _cogwheelButton;
     Button _waterBottleButton;
     Button _whistleButton;
     Button _hexKeyButton;
+
+    int _count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +33,12 @@ public class MainActivity extends AppCompatActivity {
 
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
 
+        _eyeButton = (Button) findViewById(R.id.eyeButton);
         _cogwheelButton = (Button) findViewById(R.id.cogwheelButton);
         _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
         _whistleButton = (Button) findViewById(R.id.whistleButton);
         _hexKeyButton = (Button) findViewById(R.id.hexKeyButton);
+        _count = 0;
     }
 
     public void onButtonClicked(View view) {
@@ -50,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.hexKeyButton:
                 _dialogTextView.setText("You clicked the hex key!");
                 break;
+            case R.id.eyeButton:
+                System.out.println("here");
+                ++_count;
+                if (_count == 10) {
+                    _dialogTextView.setText("Stop poking my eye!");
+                    _count = 0;
+                }
             default:
                 break;
         }
