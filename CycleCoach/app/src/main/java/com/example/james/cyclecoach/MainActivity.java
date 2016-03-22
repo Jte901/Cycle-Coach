@@ -1,5 +1,6 @@
 package com.example.james.cyclecoach;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     Button _whistleButton;
     Button _hexKeyButton;
 
-    int _count;
+    int _eyePressCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,10 @@ public class MainActivity extends AppCompatActivity {
         _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
         _whistleButton = (Button) findViewById(R.id.whistleButton);
         _hexKeyButton = (Button) findViewById(R.id.hexKeyButton);
-        _count = 0;
+        _eyePressCount = 0;
+
+        Intent intent = new Intent(this, IntroductionActivity.class);
+        startActivity(intent);
     }
 
     public void onButtonClicked(View view) {
@@ -56,11 +60,10 @@ public class MainActivity extends AppCompatActivity {
                 _dialogTextView.setText("You clicked the hex key!");
                 break;
             case R.id.eyeButton:
-                System.out.println("here");
-                ++_count;
-                if (_count == 10) {
+                ++_eyePressCount;
+                if (_eyePressCount == 10) {
                     _dialogTextView.setText("Stop poking my eye!");
-                    _count = 0;
+                    _eyePressCount = 0;
                 }
             default:
                 break;
