@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.james.cyclecoach.WhistleActivty"
+    android:orientation="vertical">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="3">
+        <TableRow
+            android:id="@+id/progressrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:weightSum="2"
+            android:layout_weight="1"
+            android:background="#487af0"
+            android:clickable="true">
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="0px"
+                android:src="@drawable/whistle"
+                android:adjustViewBounds="true"
+                android:layout_weight="1"/>
+            <TextView
+                android:text="Progress"
+                android:textSize="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal"/>
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/reminderrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:background="#de4b4b"
+            android:clickable="true">
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="0px"
+                android:src="@drawable/waterbottle"
+                android:adjustViewBounds="true"
+                android:layout_weight="1"/>
+            <TextView
+                android:text="Reminder"
+                android:textSize="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal"/>
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/goalsrow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:layout_weight="1"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:background="#dcfb52"
+            android:clickable="true">
+            <ImageView
+                android:layout_height="match_parent"
+                android:layout_width="0px"
+                android:src="@drawable/gear"
+                android:adjustViewBounds="true"
+                android:layout_weight="1"/>
+            <TextView
+                android:text="Goals"
+                android:textSize="50dp"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical|center_horizontal" />
+
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

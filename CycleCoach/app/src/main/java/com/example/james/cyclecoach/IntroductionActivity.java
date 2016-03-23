@@ -62,6 +62,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.skipIntroButton:
+                finish();
                 break;
             case R.id.gotItButton:
                 if (_currentDialog == _dialogs.size()) return;
