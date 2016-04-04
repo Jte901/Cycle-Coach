@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button _hexKeyButton;
 
     int _eyePressCount;
+    UserData data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         _layout = (RelativeLayout) findViewById(R.id.main_activity_layout);
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
+
+        data = new UserData();
+        if (getIntent().getExtras() != null)
+            data.name = getIntent().getExtras().getString("NAME");
 
         _eyeButton = (Button) findViewById(R.id.eyeButton);
         _cogwheelButton = (Button) findViewById(R.id.gearButton);
@@ -49,10 +54,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _whistleButton.setOnClickListener(this);
         _hexKeyButton.setOnClickListener(this);
 
-        Intent intent = new Intent(this, IntroductionActivity.class);
-        startActivity(intent);
+        if (data.firstTime) {
+            Intent intent = new Intent(this, IntroductionActivity.class);
+            startActivity(intent);
+            data.firstTime = false;
+        }
 
-        _dialogTextView.setText("Whatcha wanna look at?");
+        if (data.name.compareTo("") == 0) {
+            Intent nameIntent = new Intent(this, NameActivity.class);
+            startActivity(nameIntent);
+        }
+        else {
+            _dialogTextView.setText("What can I help you with, " + data.name + "?");
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        data.name = getIntent().getExtras().getString("NAME");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        outState.putString("NAME", data.name);
+        outState.putFloat("DISTANCE", data.distance);
+        outState.putInt("DAYS", data.days);
+        outState.putInt("FREQUENCY", data.frequency);
+        outState.putBoolean("FIRST_TIME", data.firstTime);
     }
 
     @Override
