@@ -5,7 +5,7 @@
         android:duration="300"
         android:fillAfter="true"
         android:fromYDelta="0%p"
-        android:toYDelta="2%p"
+        android:toYDelta="3%p"
         android:repeatMode="reverse"
         android:repeatCount="infinite"/>
 </set>
