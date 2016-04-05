@@ -1,6 +1,7 @@
 package com.example.james.cyclecoach;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,9 +33,16 @@ public class NameActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == ok.getId()) {
             _layout.setBackgroundResource(R.drawable.happy);
             textView.setText("Nice to meet you, " + name.getText().toString() + "!");
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("NAME", name.getText().toString());
-            startActivity(intent);
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intent = new Intent(NameActivity.this, MainActivity.class);
+                    intent.putExtra("NAME", name.getText().toString());
+                    startActivity(intent);
+                }
+            }, 2000);
+
         }
 
     }

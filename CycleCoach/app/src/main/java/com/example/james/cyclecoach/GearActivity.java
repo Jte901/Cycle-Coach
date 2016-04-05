@@ -1,5 +1,6 @@
 package com.example.james.cyclecoach;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -98,6 +99,15 @@ public class GearActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == incDays.getId()) {
             data.days++;
             daysText.setText("" + data.days);
+        }
+        if (v.getId() == whistleButton.getId()) {
+            Intent whistleIntent = new Intent(this, MainActivity.class);
+            whistleIntent.putExtra("NAME", data.name);
+            whistleIntent.putExtra("DISTANCE", data.distance);
+            whistleIntent.putExtra("DAYS", data.days);
+            whistleIntent.putExtra("FREQUENCY", data.frequency);
+            whistleIntent.putExtra("FIRST_TIME", data.firstTime);
+            startActivity(whistleIntent);
         }
 
 

@@ -68,8 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@drawable/whistle"
-            android:onClick="onClick" />
+            android:background="@drawable/whistle"/>
 
         <Button
             android:id="@+id/hexKeyButton"

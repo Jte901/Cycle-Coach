@@ -1,5 +1,6 @@
 package com.example.james.cyclecoach;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +22,7 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     Button _waterBottleButton;
     Button _whistleButton;
     Button _hexKeyButton;
+    UserData data;
 
     ArrayList<String> _dialogs;
     int _currentDialog;
@@ -29,6 +31,13 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
+
+        data = new UserData();
+        data.name = getIntent().getExtras().getString("NAME");
+        data.frequency = getIntent().getExtras().getInt("FREQUENCY");
+        data.days = getIntent().getExtras().getInt("DAYS");
+        data.distance = getIntent().getExtras().getFloat("DISTANCE");
+        data.firstTime = getIntent().getExtras().getBoolean("FIRST_TIME");
 
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
 
@@ -62,6 +71,14 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.skipIntroButton:
+                data.firstTime = false;
+                Intent whistleIntent = new Intent(this, MainActivity.class);
+                whistleIntent.putExtra("NAME", data.name);
+                whistleIntent.putExtra("DISTANCE", data.distance);
+                whistleIntent.putExtra("DAYS", data.days);
+                whistleIntent.putExtra("FREQUENCY", data.frequency);
+                whistleIntent.putExtra("FIRST_TIME", data.firstTime);
+                startActivity(whistleIntent);
                 finish();
                 break;
             case R.id.gotItButton:

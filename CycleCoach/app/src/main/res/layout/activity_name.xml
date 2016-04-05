@@ -17,7 +17,7 @@
         android:layout_height="150dp"
         android:layout_marginStart="5dp"
         android:gravity="center"
-        android:text="What's your name?"
+        android:text="Hi, what's your name?"
         android:textSize="38sp" />
 
     <EditText

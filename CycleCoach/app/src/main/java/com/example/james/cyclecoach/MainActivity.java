@@ -39,8 +39,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
 
         data = new UserData();
-        if (getIntent().getExtras() != null)
+        if (getIntent().getExtras() != null) {
             data.name = getIntent().getExtras().getString("NAME");
+            data.frequency = getIntent().getExtras().getInt("FREQUENCY");
+            data.days = getIntent().getExtras().getInt("DAYS");
+            data.distance = getIntent().getExtras().getFloat("DISTANCE");
+            data.firstTime = getIntent().getExtras().getBoolean("FIRST_TIME");
+        }
 
         _eyeButton = (Button) findViewById(R.id.eyeButton);
         _cogwheelButton = (Button) findViewById(R.id.gearButton);
@@ -57,15 +62,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (data.firstTime) {
             Intent intent = new Intent(this, IntroductionActivity.class);
+            intent.putExtra("NAME", data.name);
+            intent.putExtra("DISTANCE", data.distance);
+            intent.putExtra("DAYS", data.days);
+            intent.putExtra("FREQUENCY", data.frequency);
+            intent.putExtra("FIRST_TIME", data.firstTime);
             startActivity(intent);
-            data.firstTime = false;
         }
 
         if (data.name.compareTo("") == 0) {
             Intent nameIntent = new Intent(this, NameActivity.class);
             startActivity(nameIntent);
-        }
-        else {
+        } else {
             _dialogTextView.setText("What can I help you with, " + data.name + "?");
         }
     }
@@ -102,11 +110,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.waterBottleButton:
                 _dialogTextView.setText("You clicked the water bottle!");
-                break;
-            case R.id.whistleButton:
-                _dialogTextView.setText("You clicked the whistle!");
-                Intent intent = new Intent(this, WhistleActivty.class);
-                startActivity(intent);
                 break;
             case R.id.hexKeyButton:
                 _dialogTextView.setText("You clicked the hex key!");
