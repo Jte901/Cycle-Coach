@@ -53,7 +53,6 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void run() {
                 try {
-                    int waited = 0;
                     // Splash screen pause time
                     Thread.sleep(SPLASH_TIME_OUT);
                     Intent intent = new Intent(SplashScreenActivity.this,
@@ -66,7 +65,6 @@ public class SplashScreenActivity extends Activity {
                 } finally {
                     SplashScreenActivity.this.finish();
                 }
-
             }
         };
         splashTread.start();
