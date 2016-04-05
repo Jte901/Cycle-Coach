@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void run() {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 _layout.setBackground(getDrawable(R.drawable.lance));
+                                _dialogTextView.setText("");
                             }
                         }
                     });
