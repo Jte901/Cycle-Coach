@@ -4,4 +4,5 @@
     <string name="skip_intro">Skip intro</string>
     <string name="got_it">Got it!</string>
     <string name="title_activity_name">NameActivity</string>
+    <string name="splash_screen_title">Cycle Coach</string>
 </resources>
