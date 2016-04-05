@@ -3,20 +3,12 @@ package com.example.james.cyclecoach;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -28,7 +20,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button _eyeButton;
     Button _cogwheelButton;
     Button _waterBottleButton;
-    Button _whistleButton;
     Button _hexKeyButton;
 
     int _eyePressCount;
@@ -54,14 +45,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _eyeButton = (Button) findViewById(R.id.eyeButton);
         _cogwheelButton = (Button) findViewById(R.id.gearButton);
         _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
-        _whistleButton = (Button) findViewById(R.id.whistleButton);
         _hexKeyButton = (Button) findViewById(R.id.hexKeyButton);
         _eyePressCount = 0;
 
         _eyeButton.setOnClickListener(this);
         _cogwheelButton.setOnClickListener(this);
         _waterBottleButton.setOnClickListener(this);
-        _whistleButton.setOnClickListener(this);
         _hexKeyButton.setOnClickListener(this);
 
         if (data.firstTime) {
@@ -113,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(gearIntent);
                 break;
             case R.id.waterBottleButton:
-                _dialogTextView.setText("You clicked the water bottle!");
+                _dialogTextView.setText("You clicked the wheel bottle!");
                 break;
             case R.id.hexKeyButton:
                 _dialogTextView.setText("You clicked the hex key!");

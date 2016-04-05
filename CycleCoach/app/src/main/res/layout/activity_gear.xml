@@ -31,7 +31,7 @@
                 android:layout_marginLeft="25dp"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
-                android:textSize="36sp"
+                android:textSize="30sp"
                 android:id="@+id/head"/>
         </LinearLayout>
 
