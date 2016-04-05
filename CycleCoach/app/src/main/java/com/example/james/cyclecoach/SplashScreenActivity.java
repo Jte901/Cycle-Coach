@@ -43,8 +43,8 @@ public class SplashScreenActivity extends Activity {
 //        l.startAnimation(anim);
 
         AnimationSet animationSet = new AnimationSet(false);
-        animationSet.addAnimation(AnimationUtils.loadAnimation(this, R.anim.translate));
-//        animationSet.addAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate));
+//        animationSet.addAnimation(AnimationUtils.loadAnimation(this, R.anim.translate));
+        animationSet.addAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate));
 
         ImageView iv = (ImageView) findViewById(R.id.splash);
         iv.clearAnimation();
@@ -56,10 +56,7 @@ public class SplashScreenActivity extends Activity {
                 try {
                     int waited = 0;
                     // Splash screen pause time
-                    while (waited < SPLASH_TIME_OUT) {
-                        sleep(100);
-                        waited += 100;
-                    }
+                    Thread.sleep(SPLASH_TIME_OUT);
                     Intent intent = new Intent(SplashScreenActivity.this,
                             MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
