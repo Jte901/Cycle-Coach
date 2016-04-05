@@ -36,14 +36,13 @@ public class SplashScreenActivity extends Activity {
     }
 
     private void StartAnimations() {
-//        Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
-//        anim.reset();
-//        LinearLayout l = (LinearLayout) findViewById(R.id.lin_lay);
-//        l.clearAnimation();
-//        l.startAnimation(anim);
+        Animation anim = AnimationUtils.loadAnimation(this, R.anim.translate);
+        anim.reset();
+        LinearLayout l = (LinearLayout) findViewById(R.id.lin_lay);
+        l.clearAnimation();
+        l.startAnimation(anim);
 
         AnimationSet animationSet = new AnimationSet(false);
-//        animationSet.addAnimation(AnimationUtils.loadAnimation(this, R.anim.translate));
         animationSet.addAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate));
 
         ImageView iv = (ImageView) findViewById(R.id.splash);
