@@ -9,7 +9,7 @@ import android.os.Handler;
  * Created by Austin on 3/22/2016.
  */
 public class SplashScreenActivity extends Activity {
-    private static int SPLASH_TIME_OUT = 3000;
+    private static int SPLASH_TIME_OUT = 1500;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
