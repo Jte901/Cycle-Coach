@@ -75,6 +75,8 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
 
                 if (_currentDialog == 1) {
                     _dialogTextView.setTextSize(30);
+                } else if (_currentDialog == 3) {
+                    _dialogTextView.setTextSize(30);
                 } else if (_currentDialog == 5) {
                     _dialogTextView.setTextSize(30);
                     _gearButton.setBackgroundResource(R.drawable.gear_highlight);

@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         _layout = (RelativeLayout) findViewById(R.id.main_activity_layout);
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
 
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.gearButton:
-                _dialogTextView.setText("You clicked the cogwheel!");
+                _dialogTextView.setText("You clicked the gear!");
                 break;
             case R.id.waterBottleButton:
                 _dialogTextView.setText("You clicked the water bottle!");
