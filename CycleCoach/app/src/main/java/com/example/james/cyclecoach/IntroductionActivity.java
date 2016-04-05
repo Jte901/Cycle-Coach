@@ -82,12 +82,16 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                 finish();
                 break;
             case R.id.gotItButton:
-                if (_currentDialog == _dialogs.size()) return;
-
                 _gearButton.setBackgroundResource(R.drawable.gear);
                 _waterBottleButton.setBackgroundResource(R.drawable.waterbottle);
                 _whistleButton.setBackgroundResource(R.drawable.whistle);
                 _hexKeyButton.setBackgroundResource(R.drawable.hexkey);
+
+                if (_currentDialog == _dialogs.size()) {
+                    _dialogTextView.setText("");
+                    return;
+                }
+
                 _dialogTextView.setTextSize(38);
 
                 if (_currentDialog == 1) {
@@ -96,13 +100,21 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
                     _dialogTextView.setTextSize(30);
                 } else if (_currentDialog == 5) {
                     _dialogTextView.setTextSize(30);
-                    _gearButton.setBackgroundResource(R.drawable.gear_highlight);
+                    _waterBottleButton.setBackgroundResource(0);
+                    _whistleButton.setBackgroundResource(0);
+                    _hexKeyButton.setBackgroundResource(0);
                 } else if (_currentDialog == 6) {
-                    _waterBottleButton.setBackgroundResource(R.drawable.waterbottle_highlight);
+                    _gearButton.setBackgroundResource(0);
+                    _whistleButton.setBackgroundResource(0);
+                    _hexKeyButton.setBackgroundResource(0);
                 } else if (_currentDialog == 7) {
-                    _whistleButton.setBackgroundResource(R.drawable.whistle_highlight);
+                    _gearButton.setBackgroundResource(0);
+                    _waterBottleButton.setBackgroundResource(0);
+                    _hexKeyButton.setBackgroundResource(0);
                 } else if (_currentDialog == 8) {
-                    _hexKeyButton.setBackgroundResource(R.drawable.hexkey_highlight);
+                    _gearButton.setBackgroundResource(0);
+                    _waterBottleButton.setBackgroundResource(0);
+                    _whistleButton.setBackgroundResource(0);
                     _dialogTextView.setTextSize(24);
                 }
                 _dialogTextView.setText(_dialogs.get(_currentDialog));
