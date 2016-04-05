@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,6 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout _layout;
@@ -120,11 +124,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     _dialogTextView.setText("Stop poking my eye!");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         _layout.setBackground(getDrawable(R.drawable.lance_eyepoked));
+                        fixEye();
                     }
                     _eyePressCount = 0;
                 }
             default:
                 break;
+        }
+    }
+
+    private void fixEye() {
+        try {
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                                _layout.setBackground(getDrawable(R.drawable.lance));
+                            }
+                        }
+                    });
+                }
+            }, 2000);
+        } catch (Exception e) {
+            Log.e("Error", e.toString());
         }
     }
 }
