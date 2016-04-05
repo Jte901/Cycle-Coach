@@ -32,7 +32,8 @@
             android:name=".WhistleActivty"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".NameActivity"></activity>
+        <activity android:name=".NameActivity" />
+        <activity android:name=".GearActivity"></activity>
     </application>
 
 </manifest>

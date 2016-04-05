@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         data.name = getIntent().getExtras().getString("NAME");
+        data.frequency = getIntent().getExtras().getInt("FREQUENCY");
+        data.days = getIntent().getExtras().getInt("DAYS");
+        data.distance = getIntent().getExtras().getFloat("DISTANCE");
+        data.firstTime = getIntent().getExtras().getBoolean("FIRST_TIME");
     }
 
     @Override
@@ -87,7 +91,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.gearButton:
-                _dialogTextView.setText("You clicked the cogwheel!");
+                Intent gearIntent = new Intent(this, GearActivity.class);
+                gearIntent.putExtra("NAME", data.name);
+                gearIntent.putExtra("DISTANCE", data.distance);
+                gearIntent.putExtra("DAYS", data.days);
+                gearIntent.putExtra("FREQUENCY", data.frequency);
+                gearIntent.putExtra("FIRST_TIME", data.firstTime);
+                startActivity(gearIntent);
                 break;
             case R.id.waterBottleButton:
                 _dialogTextView.setText("You clicked the water bottle!");
