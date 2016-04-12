@@ -16,9 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#F3F3F3"
+        android:gravity="center"
         android:text="@string/progress"
         android:textColor="#000000"
-        android:gravity="center"
         android:textSize="35sp" />
 
     <com.androidplot.xy.XYPlot
@@ -64,8 +64,8 @@
         android:layout_height="50dp"
         android:layout_below="@+id/plot"
         android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:background="#F3F3F3" />
+        android:background="#F3F3F3"
+        android:gravity="center" />
 
     <Spinner
         android:id="@+id/categorySpinner"
@@ -73,7 +73,32 @@
         android:layout_height="50dp"
         android:layout_below="@+id/timesSpinner"
         android:layout_marginTop="10dp"
+        android:background="#F3F3F3"
+        android:gravity="center" />
+
+    <ImageView
+        android:id="@+id/dialog"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/categorySpinner"
+        android:layout_marginTop="10sp"
+        android:src="@drawable/progress_dialog" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/categorySpinner"
         android:gravity="center"
-        android:background="#F3F3F3" />
+        android:text="Way to be persistent!"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/dialog"
+        android:src="@drawable/progress_lance" />
 
 </RelativeLayout>
