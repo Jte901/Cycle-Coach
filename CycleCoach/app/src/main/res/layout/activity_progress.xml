@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ap="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#999999"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.james.cyclecoach.ProgressActivity">
+
+    <TextView
+        android:id="@+id/progressText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F3F3F3"
+        android:text="@string/progress"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:textSize="35sp" />
+
+    <com.androidplot.xy.XYPlot
+        android:id="@+id/plot"
+        android:layout_width="fill_parent"
+        android:layout_height="300dp"
+        android:layout_below="@id/progressText"
+        android:layout_marginTop="10dp"
+        ap:backgroundColor="#CFE2F3"
+        ap:borderColor="#CFE2F3"
+        ap:domainLabelTextSize="16sp"
+        ap:domainOriginTickLabelTextSize="12sp"
+        ap:domainTickLabelTextSize="12sp"
+        ap:graphBackgroundColor="#CFE2F3"
+        ap:graphDomainLineColor="@android:color/transparent"
+        ap:graphDomainLineThickness="1dp"
+        ap:graphMarginBottom="40dp"
+        ap:graphMarginLeft="5dp"
+        ap:graphMarginRight="10dp"
+        ap:graphMarginTop="20dp"
+        ap:graphRangeLineColor="@android:color/transparent"
+        ap:graphRangeLineThickness="1dp"
+        ap:gridBackgroundColor="#CFE2F3"
+        ap:gridPaddingBottom="10dp"
+        ap:gridPaddingLeft="20dp"
+        ap:gridPaddingRight="20dp"
+        ap:gridPaddingTop="10dp"
+        ap:label="Daily Goals"
+        ap:labelTextSize="20sp"
+        ap:legendAnchorPosition="right_bottom"
+        ap:legendHeight="25dp"
+        ap:legendIconHeight="15dp"
+        ap:legendIconWidth="15dp"
+        ap:legendTextSize="15sp"
+        ap:rangeLabel="Goals"
+        ap:rangeLabelTextSize="16sp"
+        ap:rangeOriginTickLabelTextSize="15sp"
+        ap:rangeTickLabelTextSize="15sp" />
+
+    <Spinner
+        android:id="@+id/timesSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/plot"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="#F3F3F3" />
+
+    <Spinner
+        android:id="@+id/categorySpinner"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/timesSpinner"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:background="#F3F3F3" />
+
+</RelativeLayout>

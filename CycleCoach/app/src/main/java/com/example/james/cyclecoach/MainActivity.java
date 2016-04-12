@@ -18,8 +18,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView _dialogTextView;
 
     Button _eyeButton;
-    Button _cogwheelButton;
+    Button _gearButton;
     Button _waterBottleButton;
+    Button _whistleButton;
     Button _hexKeyButton;
 
     int _eyePressCount;
@@ -43,14 +44,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
         _eyeButton = (Button) findViewById(R.id.eyeButton);
-        _cogwheelButton = (Button) findViewById(R.id.gearButton);
+        _gearButton = (Button) findViewById(R.id.gearButton);
         _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
+        _whistleButton = (Button) findViewById(R.id.whistleButton);
         _hexKeyButton = (Button) findViewById(R.id.hexKeyButton);
         _eyePressCount = 0;
 
         _eyeButton.setOnClickListener(this);
-        _cogwheelButton.setOnClickListener(this);
+        _gearButton.setOnClickListener(this);
         _waterBottleButton.setOnClickListener(this);
+        _whistleButton.setOnClickListener(this);
         _hexKeyButton.setOnClickListener(this);
 
         if (data.firstTime) {
@@ -102,7 +105,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(gearIntent);
                 break;
             case R.id.waterBottleButton:
-                _dialogTextView.setText("You clicked the wheel bottle!");
+                _dialogTextView.setText("You clicked the water bottle!");
+                break;
+            case R.id.whistleButton:
+                Intent progressIntent = new Intent(this, ProgressActivity.class);
+                startActivity(progressIntent);
                 break;
             case R.id.hexKeyButton:
                 _dialogTextView.setText("You clicked the hex key!");

@@ -5,4 +5,16 @@
     <string name="got_it">Got it!</string>
     <string name="title_activity_name">NameActivity</string>
     <string name="splash_screen_title">Cycle Coach</string>
+    <string name="progress">Progress</string>
+
+    <string-array name="progress_times">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
+
+    <string-array name="progress_categories">
+        <item>Goals</item>
+        <item>Distance</item>
+    </string-array>
 </resources>

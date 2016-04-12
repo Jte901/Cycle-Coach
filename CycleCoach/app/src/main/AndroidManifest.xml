@@ -33,7 +33,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NameActivity" />
-        <activity android:name=".GearActivity"></activity>
+        <activity android:name=".GearActivity" />
+        <activity android:name=".ProgressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

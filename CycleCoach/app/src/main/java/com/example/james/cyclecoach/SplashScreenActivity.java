@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
  * Created by Austin on 3/22/2016.
  */
 public class SplashScreenActivity extends Activity {
-    private static int SPLASH_TIME_OUT = 5000;
+    private static int SPLASH_TIME_OUT = 1000;
     /**
      * Called when the activity is first created.
      */
