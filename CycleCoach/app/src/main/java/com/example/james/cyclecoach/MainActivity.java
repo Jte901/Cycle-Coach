@@ -112,7 +112,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(progressIntent);
                 break;
             case R.id.hexKeyButton:
-                _dialogTextView.setText("You clicked the hex key!");
+                Intent hexKeyIntent = new Intent(this, HexKeyActivity.class);
+                startActivity(hexKeyIntent);
                 break;
             case R.id.eyeButton:
                 ++_eyePressCount;

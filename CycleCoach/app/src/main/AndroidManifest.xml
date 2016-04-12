@@ -34,7 +34,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".NameActivity" />
         <activity android:name=".GearActivity" />
-        <activity android:name=".ProgressActivity"
+        <activity
+            android:name=".ProgressActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HexKeyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
     </application>

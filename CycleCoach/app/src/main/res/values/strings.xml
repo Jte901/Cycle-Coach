@@ -6,6 +6,10 @@
     <string name="title_activity_name">NameActivity</string>
     <string name="splash_screen_title">Cycle Coach</string>
     <string name="progress">Progress</string>
+    <string name="lets_meet">Let\'s Meet!</string>
+    <string name="pick_time">PICK TIME</string>
+    <string name="reminders">Reminders</string>
+    <string name="difficulty">Difficulty</string>
 
     <string-array name="progress_times">
         <item>Daily</item>
