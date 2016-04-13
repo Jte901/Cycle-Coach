@@ -1,6 +1,7 @@
 package com.example.james.cyclecoach;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -8,18 +9,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.StringReader;
+import java.io.StringWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     RelativeLayout _layout;
     TextView _dialogTextView;
-
+    ImageView lance;
     Button _eyeButton;
     Button _gearButton;
     Button _waterBottleButton;
@@ -28,16 +50,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     File nameFile;
     int _eyePressCount;
     UserData data;
+    Document doc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        lance = (ImageView) findViewById(R.id.lance_image);
+        Intent intent = getIntent();
+        String lance_state = intent.getStringExtra("LANCE_STATE");
 
         _layout = (RelativeLayout) findViewById(R.id.main_activity_layout);
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
-
         data = new UserData();
+        data.name = intent.getStringExtra("USER_NAME");
 
         _eyeButton = (Button) findViewById(R.id.eyeButton);
         _gearButton = (Button) findViewById(R.id.gearButton);
@@ -52,6 +78,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _whistleButton.setOnClickListener(this);
         _hexKeyButton.setOnClickListener(this);
 
+        if (lance_state.equals("blue")) {
+            lance.setImageDrawable(getDrawable(R.drawable.lance));
+            _dialogTextView.setText("What can I help you with, " + this.data.name + "?");
+        } else if (lance_state.equals("orange")) {
+            lance.setImageDrawable(getDrawable(R.drawable.lance_orange));
+            _dialogTextView.setText("It's been a while, " + this.data.name + "... you should ride soon.");
+
+        } else if (lance_state.equals("red")) {
+            lance.setImageDrawable(getDrawable(R.drawable.lance_red));
+            _dialogTextView.setText("It's been way too long, " + this.data.name + ". You need to ride!");
+
+        }
+        Intent splash = new Intent(this, SplashScreenActivity.class);
 
     }
 
@@ -76,22 +115,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-        nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.txt");
+        nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.xml");
         if (!nameFile.exists()) {
             Intent intent = new Intent(this, IntroductionActivity.class);
             startActivity(intent);
-        } else {
-            try {
-                FileInputStream is = new FileInputStream(nameFile);
-                byte[] d = new byte[(int)nameFile.length()];
-                is.read(d);
-                is.close();
-                this.data.name = new String(d, "UTF-8");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            _dialogTextView.setText("What can I help you with, " + this.data.name + "?");
         }
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
 
     }
 
@@ -152,5 +186,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } catch (Exception e) {
             Log.e("Error", e.toString());
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 }

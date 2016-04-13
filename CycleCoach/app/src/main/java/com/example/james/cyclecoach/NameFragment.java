@@ -13,8 +13,22 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.StringWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 
 /**
@@ -129,16 +143,57 @@ public class NameFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.nameLayout:
                 if (_continue) {
-                    File externalDir = Environment.getExternalStorageDirectory();
-                    File notes = new File(externalDir, "CycleCoach_name.txt");
+
+                    Document doc = null;
                     try {
-                        FileOutputStream os = new FileOutputStream(notes);
-                        os.write(name.getText().toString().getBytes());
-                        os.close();
+                        doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
+                        // create root: <user>
+                        Element root = doc.createElement("user");
+                        doc.appendChild(root);
+
+                        // create: <name>
+                        Element user_name = doc.createElement("name");
+                        root.appendChild(user_name);
+                        // add text to child
+                        user_name.setTextContent(name.getText().toString());
+
+                        Element user_frequency = doc.createElement("frequency");
+                        root.appendChild(user_frequency);
+
+                        Element user_days = doc.createElement("days");
+                        root.appendChild(user_days);
+
+                        Element user_distance = doc.createElement("distance");
+                        root.appendChild(user_distance);
+
+                        Element lance_state = doc.createElement("lance_state");
+                        root.appendChild(lance_state);
+                        lance_state.setTextContent("blue");
+
+                        Element user_lastopened = doc.createElement("lastopened");
+                        root.appendChild(user_lastopened);
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                        Date date = new Date();
+                        user_lastopened.setTextContent(dateFormat.format(date));
+
+                        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+                        StringWriter writer = new StringWriter();
+                        StreamResult result = new StreamResult(writer);
+                        transformer.transform(new DOMSource(doc), result);
+                        File externalDir = Environment.getExternalStorageDirectory();
+                        File notes = new File(externalDir, "CycleCoach_name.xml");
+                        try {
+                            FileOutputStream os = new FileOutputStream(notes);
+                            os.write(writer.toString().getBytes());
+                            os.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        getActivity().finish();
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    getActivity().finish();
                 }
                 break;
 
