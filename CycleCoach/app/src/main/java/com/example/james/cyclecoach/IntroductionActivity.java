@@ -1,125 +1,48 @@
 package com.example.james.cyclecoach;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
-public class IntroductionActivity extends AppCompatActivity implements View.OnClickListener {
-
-    TextView _dialogTextView;
-    Button _skipIntroButton;
-    Button _gotItButton;
-    Button _gearButton;
-    Button _waterBottleButton;
-    Button _whistleButton;
-    Button _hexKeyButton;
-    UserData data;
-
-    ArrayList<String> _dialogs;
-    int _currentDialog;
+public class IntroductionActivity extends AppCompatActivity implements View.OnClickListener,
+        IntroductionFragment.OnFragmentInteractionListener, NameFragment.OnFragmentInteractionListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
+        Fragment fragment = null;
+        Class fragmentClass = IntroductionFragment.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
 
-        data = new UserData();
-        data.name = getIntent().getExtras().getString("NAME");
-        data.frequency = getIntent().getExtras().getInt("FREQUENCY");
-        data.days = getIntent().getExtras().getInt("DAYS");
-        data.distance = getIntent().getExtras().getFloat("DISTANCE");
-        data.firstTime = getIntent().getExtras().getBoolean("FIRST_TIME");
-
-        _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
-
-        _skipIntroButton = (Button) findViewById(R.id.skipIntroButton);
-        _gotItButton = (Button) findViewById(R.id.gotItButton);
-
-        _gearButton = (Button) findViewById(R.id.gearButton);
-        _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
-        _whistleButton = (Button) findViewById(R.id.whistleButton);
-        _hexKeyButton = (Button) findViewById(R.id.hexKeyButton);
-
-        _dialogs = new ArrayList<>();
-        _dialogs.add("Hi! I'm Lance, your new cycling coach!");
-        _dialogs.add("I'll keep track of your cycling stats, but more importantly I'll help you set " +
-                "and obtain your cycling goals.");
-        _dialogs.add("It's up to you whether you'll improve or not!");
-        _dialogs.add("But I can help you figure out the best way for you to do that.");
-        _dialogs.add("Besides meeting face-to-face, there are 4 areas you should know about.");
-        _dialogs.add("The gear will take you to your cycling data. (Remember, I can only keep track " +
-                "of things you tell me about.)");
-        _dialogs.add("The sports bottle is where you can record your nutrition.");
-        _dialogs.add("The whistle is where you can set & check your coaching settings.");
-        _dialogs.add("The hex key is where you can set sensors like NFC, cadence, HR, etc. (You'll " +
-                "need to make sure I can do that for you, but I'll help when the time comes.)");
-
-        _dialogTextView.setText(_dialogs.get(0));
-        _currentDialog = 1;
+        }
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.flContent, fragment).commit();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.skipIntroButton:
-                data.firstTime = false;
-                Intent whistleIntent = new Intent(this, MainActivity.class);
-                whistleIntent.putExtra("NAME", data.name);
-                whistleIntent.putExtra("DISTANCE", data.distance);
-                whistleIntent.putExtra("DAYS", data.days);
-                whistleIntent.putExtra("FREQUENCY", data.frequency);
-                whistleIntent.putExtra("FIRST_TIME", data.firstTime);
-                startActivity(whistleIntent);
-                finish();
-                break;
-            case R.id.gotItButton:
-                _gearButton.setBackgroundResource(R.drawable.gear);
-                _waterBottleButton.setBackgroundResource(R.drawable.waterbottle);
-                _whistleButton.setBackgroundResource(R.drawable.whistle);
-                _hexKeyButton.setBackgroundResource(R.drawable.hexkey);
 
-                if (_currentDialog == _dialogs.size()) {
-                    _dialogTextView.setText("");
-                    return;
-                }
+    }
 
-                _dialogTextView.setTextSize(38);
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
-                if (_currentDialog == 1) {
-                    _dialogTextView.setTextSize(30);
-                } else if (_currentDialog == 3) {
-                    _dialogTextView.setTextSize(30);
-                } else if (_currentDialog == 5) {
-                    _dialogTextView.setTextSize(30);
-                    _waterBottleButton.setBackgroundResource(0);
-                    _whistleButton.setBackgroundResource(0);
-                    _hexKeyButton.setBackgroundResource(0);
-                } else if (_currentDialog == 6) {
-                    _gearButton.setBackgroundResource(0);
-                    _whistleButton.setBackgroundResource(0);
-                    _hexKeyButton.setBackgroundResource(0);
-                } else if (_currentDialog == 7) {
-                    _gearButton.setBackgroundResource(0);
-                    _waterBottleButton.setBackgroundResource(0);
-                    _hexKeyButton.setBackgroundResource(0);
-                } else if (_currentDialog == 8) {
-                    _gearButton.setBackgroundResource(0);
-                    _waterBottleButton.setBackgroundResource(0);
-                    _whistleButton.setBackgroundResource(0);
-                    _dialogTextView.setTextSize(24);
-                }
-                _dialogTextView.setText(_dialogs.get(_currentDialog));
-                ++_currentDialog;
-                break;
-        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+        //super.onBackPressed();
     }
 }

@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="mobilesoftware.austin.cyclecoach_v2.IntroductionFragment"
+    android:background="@drawable/lance">
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/eyeButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="100dp"
+        android:layout_height="85dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="49dp"
+        android:layout_marginRight="49dp"
+        android:layout_marginTop="246dp"
+        android:background="@android:color/transparent"
+        android:onClick="onClick" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="5dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/view" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-5dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal|bottom">
+
+        <Button
+            android:id="@+id/gearButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/gear"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/waterBottleButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/waterbottle"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/whistleButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/whistle"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/hexKeyButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:background="@drawable/hexkey"
+            android:onClick="onClick" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/gotItButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="100dp"
+        android:background="#CFE2F3"
+        android:onClick="onClick"
+        android:text="Got It"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:layout_gravity="right|bottom" />
+
+    <Button
+        android:id="@+id/skipIntroButton"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="100dp"
+        android:background="#CFE2F3"
+        android:onClick="onClick"
+        android:text="Skip Intro"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        android:layout_gravity="left|bottom" />
+
+    <ScrollView
+        android:layout_width="368dp"
+        android:layout_height="167dp"
+        android:layout_gravity="center_horizontal|top"
+        android:paddingTop="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:padding="10dp"
+            android:id="@+id/dialogTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:textSize="38sp" />
+    </ScrollView>
+
+
+</RelativeLayout>

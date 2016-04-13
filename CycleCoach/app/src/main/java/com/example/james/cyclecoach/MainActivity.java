@@ -3,6 +3,7 @@ package com.example.james.cyclecoach;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button _waterBottleButton;
     Button _whistleButton;
     Button _hexKeyButton;
-
+    File nameFile;
     int _eyePressCount;
     UserData data;
 
@@ -35,13 +38,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
 
         data = new UserData();
-        if (getIntent().getExtras() != null) {
-            data.name = getIntent().getExtras().getString("NAME");
-            data.frequency = getIntent().getExtras().getInt("FREQUENCY");
-            data.days = getIntent().getExtras().getInt("DAYS");
-            data.distance = getIntent().getExtras().getFloat("DISTANCE");
-            data.firstTime = getIntent().getExtras().getBoolean("FIRST_TIME");
-        }
 
         _eyeButton = (Button) findViewById(R.id.eyeButton);
         _gearButton = (Button) findViewById(R.id.gearButton);
@@ -56,22 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _whistleButton.setOnClickListener(this);
         _hexKeyButton.setOnClickListener(this);
 
-        if (data.firstTime) {
-            Intent intent = new Intent(this, IntroductionActivity.class);
-            intent.putExtra("NAME", data.name);
-            intent.putExtra("DISTANCE", data.distance);
-            intent.putExtra("DAYS", data.days);
-            intent.putExtra("FREQUENCY", data.frequency);
-            intent.putExtra("FIRST_TIME", data.firstTime);
-            startActivity(intent);
-        }
 
-        if (data.name.compareTo("") == 0) {
-            Intent nameIntent = new Intent(this, NameActivity.class);
-            startActivity(nameIntent);
-        } else {
-            _dialogTextView.setText("What can I help you with, " + data.name + "?");
-        }
     }
 
     @Override
@@ -90,6 +71,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putInt("DAYS", data.days);
         outState.putInt("FREQUENCY", data.frequency);
         outState.putBoolean("FIRST_TIME", data.firstTime);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.txt");
+        if (!nameFile.exists()) {
+            Intent intent = new Intent(this, IntroductionActivity.class);
+            startActivity(intent);
+        } else {
+            try {
+                FileInputStream is = new FileInputStream(nameFile);
+                byte[] d = new byte[(int)nameFile.length()];
+                is.read(d);
+                is.close();
+                this.data.name = new String(d, "UTF-8");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            _dialogTextView.setText("What can I help you with, " + this.data.name + "?");
+        }
+
     }
 
     @Override
