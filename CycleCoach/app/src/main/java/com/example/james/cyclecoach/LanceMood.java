@@ -62,6 +62,7 @@ public class LanceMood extends AppCompatActivity implements View.OnClickListener
                 int lastday = cal.get(Calendar.DAY_OF_MONTH);
                 int lastmonth = cal.get(Calendar.MONTH);
 
+
                 if (currmonth != lastmonth || currday - lastday > 1) {
                     if (currhour > 0 && currhour <= 4) { // 12am - 5am
                         text.setText("ZzzzZzzzz... wuh... are you... gonna go for a ride... now?");
