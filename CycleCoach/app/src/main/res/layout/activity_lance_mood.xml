@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_activity_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:interpolator="@android:anim/accelerate_interpolator"
+    android:fromAlpha="0.0"
+    android:toAlpha="1.0"
+    android:duration="500"
+    tools:context="com.example.james.cyclecoach.MainActivity"
+    android:background="#000000">
+    <ImageView
+        android:id="@+id/lance_mood_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/lance"
+        android:scaleType="fitXY" />
+    <TextView
+        android:id="@+id/lance_mood_text"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginStart="5dp"
+        android:gravity="center"
+        android:textSize="38sp" />
+
+    <android.support.v4.widget.Space
+        android:layout_width="5dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Tap anywhere to continue."
+        android:id="@+id/textView"
+        android:background="#65b2f2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="35dp"
+        android:padding="10dp" />
+
+</RelativeLayout>

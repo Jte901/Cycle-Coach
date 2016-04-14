@@ -1,6 +1,7 @@
 package com.example.james.cyclecoach;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -166,6 +167,9 @@ public class NameFragment extends Fragment implements View.OnClickListener{
                         Element user_distance = doc.createElement("distance");
                         root.appendChild(user_distance);
 
+                        Element last_ride = doc.createElement("last_ride");
+                        root.appendChild(last_ride);
+
                         Element lance_state = doc.createElement("lance_state");
                         root.appendChild(lance_state);
                         lance_state.setTextContent("blue");
@@ -175,6 +179,7 @@ public class NameFragment extends Fragment implements View.OnClickListener{
                         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
                         Date date = new Date();
                         user_lastopened.setTextContent(dateFormat.format(date));
+                        last_ride.setTextContent(dateFormat.format(date));
 
                         Transformer transformer = TransformerFactory.newInstance().newTransformer();
                         StringWriter writer = new StringWriter();
@@ -189,6 +194,10 @@ public class NameFragment extends Fragment implements View.OnClickListener{
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
+                        Intent in = new Intent();
+                        in.putExtra("intro_name",name.getText().toString());
+                        in.putExtra("intro_lance_state", "blue");
+                        getActivity().setResult(getActivity().RESULT_OK, in);
                         getActivity().finish();
 
                     } catch (Exception e) {

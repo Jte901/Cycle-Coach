@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     UserData data;
     Document doc;
     String lance_state;
+    boolean openLanceMood;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lance = (ImageView) findViewById(R.id.lance_image);
         Intent intent = getIntent();
         lance_state = intent.getStringExtra("LANCE_STATE");
-
+        openLanceMood = intent.getBooleanExtra("OPEN_MOOD", false);
         _layout = (RelativeLayout) findViewById(R.id.main_activity_layout);
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
         data = new UserData();
@@ -90,8 +91,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             _dialogTextView.setText("It's been way too long, " + this.data.name + ". You need to ride!");
 
         }
-        Intent splash = new Intent(this, SplashScreenActivity.class);
-
     }
 
     @Override
@@ -118,7 +117,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.xml");
         if (!nameFile.exists()) {
             Intent intent = new Intent(this, IntroductionActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, 1);
+        }
+        else {
+            if (openLanceMood) {
+                openLanceMood = false;
+                Intent intent = new Intent(this, LanceMood.class);
+                intent.putExtra("lance_base_mood", lance_state);
+                intent.putExtra("username", this.data.name);
+                startActivity(intent);
+            }
         }
 
     }
@@ -176,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void run() {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                                _layout.setBackground(getDrawable(R.drawable.lance));
+                                lance.setImageDrawable(getDrawable(R.drawable.lance));
                                 _dialogTextView.setText("");
                             }
                         }
@@ -191,5 +199,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                lance_state = data.getStringExtra("intro_lance_state");
+                this.data.name = data.getStringExtra("intro_name");
+                _dialogTextView.setText("What can I help you with, " + this.data.name + "?");
+            }
+        }
     }
 }

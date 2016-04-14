@@ -97,6 +97,7 @@ public class SplashScreenActivity extends Activity {
                     File nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.xml");
                     String name = "";
                     String lance_state = "";
+                    boolean openLanceMood = false;
                     if (nameFile.exists()) {
                         //load data
                         name = doc.getElementsByTagName("name").item(0).getTextContent();
@@ -121,7 +122,12 @@ public class SplashScreenActivity extends Activity {
                             doc.getElementsByTagName("lance_state").item(0).setTextContent("red");
 
                         }
-                        //change tag text
+
+                        if (date.getTime() - lastdate.getTime() > TimeUnit.HOURS.toMillis(1)) {
+                            openLanceMood = true;
+
+                        }
+                            //change tag text
                         Date d = new Date();
                         doc.getElementsByTagName("lastopened").item(0).setTextContent(dateFormat.format(d));
                         //write xml
@@ -142,6 +148,7 @@ public class SplashScreenActivity extends Activity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     intent.putExtra("USER_NAME", name);
                     intent.putExtra("LANCE_STATE", lance_state);
+                    intent.putExtra("OPEN_MOOD", openLanceMood);
                     startActivity(intent);
                     overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                     SplashScreenActivity.this.finish();
