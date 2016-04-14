@@ -51,14 +51,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     int _eyePressCount;
     UserData data;
     Document doc;
-
+    String lance_state;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lance = (ImageView) findViewById(R.id.lance_image);
         Intent intent = getIntent();
-        String lance_state = intent.getStringExtra("LANCE_STATE");
+        lance_state = intent.getStringExtra("LANCE_STATE");
 
         _layout = (RelativeLayout) findViewById(R.id.main_activity_layout);
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
@@ -154,10 +154,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.eyeButton:
                 ++_eyePressCount;
-                if (_eyePressCount == 10) {
+                if (_eyePressCount == 10 && lance_state.equals("blue")) {
                     _dialogTextView.setText("Stop poking my eye!");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        _layout.setBackground(getDrawable(R.drawable.lance_eyepoked));
+                        lance.setImageDrawable(getDrawable(R.drawable.lance_eyepoked));
                         fixEye();
                     }
                     _eyePressCount = 0;

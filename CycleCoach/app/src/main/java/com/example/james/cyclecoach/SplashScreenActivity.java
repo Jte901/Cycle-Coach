@@ -94,42 +94,47 @@ public class SplashScreenActivity extends Activity {
             @Override
             public void run() {
                 try {
-                    //load data
-                    String name = doc.getElementsByTagName("name").item(0).getTextContent();
-                    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-                    Date date = new Date();
-                    Date lastdate = dateFormat.parse(doc.getElementsByTagName("lastopened").item(0).getTextContent());
-                    String lance_state = "blue";
-                    if (doc.getElementsByTagName("lance_state").item(0).getTextContent().equals("blue")) {
+                    File nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.xml");
+                    String name = "";
+                    String lance_state = "";
+                    if (nameFile.exists()) {
+                        //load data
+                        name = doc.getElementsByTagName("name").item(0).getTextContent();
+                        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+                        Date date = new Date();
+                        Date lastdate = dateFormat.parse(doc.getElementsByTagName("lastopened").item(0).getTextContent());
                         lance_state = "blue";
-                    } else if (doc.getElementsByTagName("lance_state").item(0).getTextContent().equals("orange")) {
-                        lance_state = "orange";
-                    } else if (doc.getElementsByTagName("lance_state").item(0).getTextContent().equals("red")) {
-                        lance_state = "red";
-                    }
-                    if (date.getTime() - lastdate.getTime() > TimeUnit.DAYS.toMillis(1) &&
-                            date.getTime() - lastdate.getTime() < TimeUnit.DAYS.toMillis(2) ) {
-                        lance_state = "orange";
-                        doc.getElementsByTagName("lance_state").item(0).setTextContent("orange");
+                        if (doc.getElementsByTagName("lance_state").item(0).getTextContent().equals("blue")) {
+                            lance_state = "blue";
+                        } else if (doc.getElementsByTagName("lance_state").item(0).getTextContent().equals("orange")) {
+                            lance_state = "orange";
+                        } else if (doc.getElementsByTagName("lance_state").item(0).getTextContent().equals("red")) {
+                            lance_state = "red";
+                        }
+                        if (date.getTime() - lastdate.getTime() > TimeUnit.DAYS.toMillis(1) &&
+                                date.getTime() - lastdate.getTime() < TimeUnit.DAYS.toMillis(2)) {
+                            lance_state = "orange";
+                            doc.getElementsByTagName("lance_state").item(0).setTextContent("orange");
 
-                    } else if (date.getTime() - lastdate.getTime() > TimeUnit.DAYS.toMillis(2) ) {
-                        lance_state = "red";
-                        doc.getElementsByTagName("lance_state").item(0).setTextContent("red");
+                        } else if (date.getTime() - lastdate.getTime() > TimeUnit.DAYS.toMillis(2)) {
+                            lance_state = "red";
+                            doc.getElementsByTagName("lance_state").item(0).setTextContent("red");
 
+                        }
+                        //change tag text
+                        Date d = new Date();
+                        doc.getElementsByTagName("lastopened").item(0).setTextContent(dateFormat.format(d));
+                        //write xml
+                        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+                        StringWriter writer = new StringWriter();
+                        StreamResult result = new StreamResult(writer);
+                        transformer.transform(new DOMSource(doc), result);
+                        File externalDir = Environment.getExternalStorageDirectory();
+                        File notes = new File(externalDir, "CycleCoach_name.xml");
+                        FileOutputStream os = new FileOutputStream(notes);
+                        os.write(writer.toString().getBytes());
+                        os.close();
                     }
-                    //change tag text
-                    Date d = new Date();
-                    doc.getElementsByTagName("lastopened").item(0).setTextContent(dateFormat.format(d));
-                    //write xml
-                    Transformer transformer = TransformerFactory.newInstance().newTransformer();
-                    StringWriter writer = new StringWriter();
-                    StreamResult result = new StreamResult(writer);
-                    transformer.transform(new DOMSource(doc), result);
-                    File externalDir = Environment.getExternalStorageDirectory();
-                    File notes = new File(externalDir, "CycleCoach_name.xml");
-                    FileOutputStream os = new FileOutputStream(notes);
-                    os.write(writer.toString().getBytes());
-                    os.close();
                     // Splash screen pause time
                     Thread.sleep(SPLASH_TIME_OUT);
                     Intent intent = new Intent(SplashScreenActivity.this,
