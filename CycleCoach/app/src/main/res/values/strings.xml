@@ -10,6 +10,13 @@
     <string name="pick_time">PICK TIME</string>
     <string name="reminders">Reminders</string>
     <string name="difficulty">Difficulty</string>
+    <string name="smartwatch">Smart watch</string>
+    <string name="disabled">Disabled</string>
+    <string name="enabled">Enabled</string>
+    <string name="nfc">NFC</string>
+    <string name="nfc_delay">After scanning NFC, start ride in:</string>
+    <string name="hard">Hard</string>
+    <string name="medium">Medium</string>
 
     <string-array name="progress_times">
         <item>Daily</item>
@@ -20,5 +27,19 @@
     <string-array name="progress_categories">
         <item>Goals</item>
         <item>Distance</item>
+    </string-array>
+
+    <string-array name="notificationTimes">
+        <item>Every Day</item>
+        <item>Every Other Day</item>
+        <item>Once a Week</item>
+    </string-array>
+
+    <string-array name="delayTimes">
+        <item>15 seconds</item>
+        <item>30 seconds</item>
+        <item>45 seconds</item>
+        <item>1 minutes</item>
+        <item>2 minutes</item>
     </string-array>
 </resources>

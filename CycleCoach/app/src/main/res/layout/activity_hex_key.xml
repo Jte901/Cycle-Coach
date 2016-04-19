@@ -54,11 +54,13 @@
                 android:src="@drawable/clock" />
 
             <Button
+                android:id="@+id/timeButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#cfe2f3"
-                android:text="_ _ : _ _ "
+                android:text="12:00 pm"
+                android:onClick="showTimePickerDialog"
                 android:textSize="30sp" />
 
         </LinearLayout>
@@ -78,6 +80,7 @@
                 android:src="@drawable/arrow" />
 
             <Spinner
+                android:id="@+id/recurrenceSpinner"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -95,7 +98,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="#F3F3F3"
                 android:gravity="center"
@@ -114,13 +117,121 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Medium" />
+                    android:text="@string/medium" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Difficult" />
+                    android:text="@string/hard" />
             </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row3"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:gravity="center"
+                android:text="@string/smartwatch"
+                android:textColor="#000000"
+                android:layout_marginEnd="5dp"
+                android:textSize="24sp" />
+
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#cfe2f3"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enabled" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/disabled" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row4"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:gravity="center"
+                android:text="@string/nfc"
+                android:textColor="#000000"
+                android:layout_marginEnd="5dp"
+                android:textSize="24sp" />
+
+            <RadioGroup
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#cfe2f3"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enabled" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/disabled" />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/row6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/row5"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#F3F3F3"
+                android:gravity="start"
+                android:text="@string/nfc_delay"
+                android:textColor="#000000"
+                android:layout_marginEnd="5dp"
+                android:textSize="24sp" />
+
+            <Spinner
+                android:id="@+id/timesSpinner"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#cfe2f3"
+                android:orientation="horizontal">
+            </Spinner>
 
         </LinearLayout>
 
