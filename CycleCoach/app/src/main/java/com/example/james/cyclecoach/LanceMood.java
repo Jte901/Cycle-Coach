@@ -22,8 +22,9 @@ import java.util.Date;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
-public class LanceMood extends AppCompatActivity implements View.OnClickListener{
+public class LanceMood extends AppCompatActivity implements View.OnClickListener {
     ImageView lance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,15 +74,14 @@ public class LanceMood extends AppCompatActivity implements View.OnClickListener
                     } else if (currhour > 14 && currhour <= 18) { // 2pm - 6pm
                         text.setText("I think its a good time to go for a ride!");
                         lance.setImageDrawable(getDrawable(R.drawable.lance_yellow));
-                    } else if (currhour > 18 && currhour <= 20 ) { //6pm - 8pm
+                    } else if (currhour > 18 && currhour <= 20) { //6pm - 8pm
                         text.setText("It's getting kinda late, you should get that ride in!");
                         lance.setImageDrawable(getDrawable(R.drawable.lance_getting_late));
-                    } else if (currhour > 20 && currhour <=23) { //8pm - 12am
+                    } else if (currhour > 20 && currhour <= 23) { //8pm - 12am
                         text.setText("Ah it's night, try to get a ride in earlier next time...");
                         lance.setImageDrawable(getDrawable(R.drawable.lance_latenight));
                     }
-                }
-                else {
+                } else {
                     text.setText("Good work riding today!");
                     lance.setImageDrawable(getDrawable(R.drawable.lance_goodjob));
                 }
