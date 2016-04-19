@@ -181,6 +181,20 @@ public class NameFragment extends Fragment implements View.OnClickListener{
                         user_lastopened.setTextContent(dateFormat.format(date));
                         last_ride.setTextContent(dateFormat.format(date));
 
+
+                        root.appendChild(meetingTime);
+
+                        root.appendChild(meetingFrequency);
+
+                        Element difficulty = doc.createElement("difficulty");
+                        root.appendChild(difficulty);
+
+                        root.appendChild(smartWatch);
+
+                        root.appendChild(nfc);
+
+                        root.appendChild(nfcStartRideDelay);
+
                         Transformer transformer = TransformerFactory.newInstance().newTransformer();
                         StringWriter writer = new StringWriter();
                         StreamResult result = new StreamResult(writer);
