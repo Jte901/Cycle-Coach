@@ -1,11 +1,14 @@
 package com.example.james.cyclecoach;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -39,12 +42,35 @@ import javax.xml.transform.stream.StreamResult;
  * Created by Austin on 3/22/2016.
  */
 public class SplashScreenActivity extends Activity {
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static int SPLASH_TIME_OUT = 1000;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
     /**
      * Called when the activity is first created.
      */
     Thread splashTread;
     Document doc;
+
+    public void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        } else {
+            initFile();
+            StartAnimations();
+        }
+    }
 
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -56,6 +82,11 @@ public class SplashScreenActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        verifyStoragePermissions(this);
+    }
+
+    private void initFile() {
         File nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.xml");
         if (nameFile.exists()) {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -74,7 +105,6 @@ public class SplashScreenActivity extends Activity {
                 e.printStackTrace();
             }
         }
-        StartAnimations();
     }
 
     private void StartAnimations() {
@@ -127,7 +157,7 @@ public class SplashScreenActivity extends Activity {
                             openLanceMood = true;
 
                         }
-                            //change tag text
+                        //change tag text
                         Date d = new Date();
                         doc.getElementsByTagName("lastopened").item(0).setTextContent(dateFormat.format(d));
                         //write xml
@@ -160,6 +190,28 @@ public class SplashScreenActivity extends Activity {
             }
         };
         splashTread.start();
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted
+                    initFile();
+                    StartAnimations();
+
+                } else {
+
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 }
