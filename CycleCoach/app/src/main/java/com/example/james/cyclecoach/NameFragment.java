@@ -182,17 +182,22 @@ public class NameFragment extends Fragment implements View.OnClickListener{
                         last_ride.setTextContent(dateFormat.format(date));
 
 
+                        Element meetingTime = doc.createElement("meeting_time");
                         root.appendChild(meetingTime);
 
+                        Element meetingFrequency = doc.createElement("meeting_frequency");
                         root.appendChild(meetingFrequency);
 
                         Element difficulty = doc.createElement("difficulty");
                         root.appendChild(difficulty);
 
+                        Element smartWatch = doc.createElement("smartwatch");
                         root.appendChild(smartWatch);
 
+                        Element nfc = doc.createElement("nfc_enabled");
                         root.appendChild(nfc);
 
+                        Element nfcStartRideDelay = doc.createElement("nfc_start_ride_delay");
                         root.appendChild(nfcStartRideDelay);
 
                         Transformer transformer = TransformerFactory.newInstance().newTransformer();
