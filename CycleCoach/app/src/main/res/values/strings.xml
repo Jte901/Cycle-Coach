@@ -17,6 +17,7 @@
     <string name="nfc_delay">After scanning NFC, start ride in:</string>
     <string name="hard">Hard</string>
     <string name="medium">Medium</string>
+    <string name="set_it">Set it!</string>
 
     <string-array name="progress_times">
         <item>Daily</item>
@@ -39,7 +40,7 @@
         <item>15 seconds</item>
         <item>30 seconds</item>
         <item>45 seconds</item>
-        <item>1 minutes</item>
+        <item>1 minute</item>
         <item>2 minutes</item>
     </string-array>
 </resources>
