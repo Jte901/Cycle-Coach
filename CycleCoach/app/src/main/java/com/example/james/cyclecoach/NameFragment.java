@@ -181,24 +181,32 @@ public class NameFragment extends Fragment implements View.OnClickListener{
                         user_lastopened.setTextContent(dateFormat.format(date));
                         last_ride.setTextContent(dateFormat.format(date));
 
+                        Element settings = doc.createElement("settings");
+                        root.appendChild(settings);
 
                         Element meetingTime = doc.createElement("meeting_time");
-                        root.appendChild(meetingTime);
+                        meetingTime.setTextContent("12:00 PM");
+                        settings.appendChild(meetingTime);
 
                         Element meetingFrequency = doc.createElement("meeting_frequency");
-                        root.appendChild(meetingFrequency);
+                        meetingFrequency.setTextContent("Every Day");
+                        settings.appendChild(meetingFrequency);
 
                         Element difficulty = doc.createElement("difficulty");
-                        root.appendChild(difficulty);
+                        difficulty.setTextContent("medium");
+                        settings.appendChild(difficulty);
 
                         Element smartWatch = doc.createElement("smartwatch");
-                        root.appendChild(smartWatch);
+                        smartWatch.setTextContent("enabled");
+                        settings.appendChild(smartWatch);
 
                         Element nfc = doc.createElement("nfc_enabled");
-                        root.appendChild(nfc);
+                        nfc.setTextContent("enabled");
+                        settings.appendChild(nfc);
 
                         Element nfcStartRideDelay = doc.createElement("nfc_start_ride_delay");
-                        root.appendChild(nfcStartRideDelay);
+                        nfcStartRideDelay.setTextContent("30 seconds");
+                        settings.appendChild(nfcStartRideDelay);
 
                         Transformer transformer = TransformerFactory.newInstance().newTransformer();
                         StringWriter writer = new StringWriter();
