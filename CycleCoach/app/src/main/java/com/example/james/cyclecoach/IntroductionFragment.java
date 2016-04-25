@@ -1,6 +1,7 @@
 package com.example.james.cyclecoach;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -74,6 +76,10 @@ public class IntroductionFragment extends Fragment implements View.OnClickListen
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_introduction, container, false);
+
+        Window window = getActivity().getWindow();
+        window.setStatusBarColor(Color.parseColor("#000000"));
+
         _dialogs = new ArrayList<>();
         _dialogs.add("Hi! I'm Lance, your new cycling coach!");
         _dialogs.add("I'll keep track of your cycling stats, but more importantly I'll help you set " +

@@ -1,10 +1,12 @@
 package com.example.james.cyclecoach;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,6 +30,10 @@ public class LanceMood extends AppCompatActivity implements View.OnClickListener
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(Color.parseColor("#000000"));
+
         setContentView(R.layout.activity_lance_mood);
         TextView text = (TextView) findViewById(R.id.lance_mood_text);
         lance = (ImageView) findViewById(R.id.lance_mood_image);

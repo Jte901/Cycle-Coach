@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.Image;
+import android.graphics.Color;
 import android.nfc.NdefMessage;
 import android.nfc.NdefRecord;
 import android.nfc.NfcAdapter;
@@ -17,38 +17,19 @@ import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.StringReader;
-import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String MIME_TEXT_PLAIN = "text/plain";
@@ -128,6 +109,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
+        Window window = this.getWindow();
+        window.setStatusBarColor(Color.parseColor("#000000"));
+
         if (mNfcAdapter == null) {
 
         }
@@ -144,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 _dialogTextView.setText("What can I help you with, " + this.data.name + "?");
                 break;
             case "orange":
-                lance.setImageDrawable(getDrawable(R.drawable.lance_orange));
+                lance.setImageDrawable(getDrawable(R.drawable.lance_disappointed));
                 _dialogTextView.setText("It's been a while, " + this.data.name + "... you should ride soon.");
 
                 break;

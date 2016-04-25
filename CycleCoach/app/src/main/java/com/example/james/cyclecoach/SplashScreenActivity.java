@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Environment;
@@ -82,6 +83,9 @@ public class SplashScreenActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(Color.parseColor("#000000"));
 
         verifyStoragePermissions(this);
     }
