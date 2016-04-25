@@ -123,6 +123,7 @@
                     android:text="@string/medium" />
 
                 <RadioButton
+                    android:id="@+id/hardRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/hard" />
@@ -164,6 +165,7 @@
                     android:text="@string/enabled" />
 
                 <RadioButton
+                    android:id="@+id/smartWatchDisabledRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/disabled" />
@@ -205,6 +207,7 @@
                     android:text="@string/enabled" />
 
                 <RadioButton
+                    android:id="@+id/nfcDisabledRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/disabled" />

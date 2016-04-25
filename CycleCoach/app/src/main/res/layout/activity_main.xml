@@ -5,19 +5,21 @@
     android:id="@+id/main_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:interpolator="@android:anim/accelerate_interpolator"
-    android:fromAlpha="0.0"
-    android:toAlpha="1.0"
+    android:background="#000000"
     android:duration="500"
-    tools:context="com.example.james.cyclecoach.MainActivity"
-    android:background="#000000">
+    android:fitsSystemWindows="true"
+    android:fromAlpha="0.0"
+    android:interpolator="@android:anim/accelerate_interpolator"
+    android:toAlpha="1.0"
+    tools:context="com.example.james.cyclecoach.MainActivity">
+
     <ImageView
         android:id="@+id/lance_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/lance"
-        android:scaleType="fitXY" />
+        android:scaleType="fitXY"
+        android:src="@drawable/lance" />
+
     <TextView
         android:id="@+id/dialogTextView"
         android:layout_width="match_parent"
@@ -46,42 +48,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="-5dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/gearButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
-            android:background="@drawable/gear"
+            android:background="@drawable/lance_crank_wheel"
             android:onClick="onClick" />
 
         <Button
             android:id="@+id/waterBottleButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
-            android:background="@drawable/waterbottle"
+            android:background="@drawable/lance_fork"
             android:onClick="onClick" />
 
         <Button
             android:id="@+id/whistleButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
-            android:background="@drawable/whistle"/>
+            android:background="@drawable/lance_whistle" />
 
         <Button
             android:id="@+id/hexKeyButton"
             style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="80dp"
+            android:layout_height="75dp"
             android:layout_weight="1"
-            android:background="@drawable/hexkey"
+            android:background="@drawable/lance_pump"
             android:onClick="onClick" />
 
     </LinearLayout>
