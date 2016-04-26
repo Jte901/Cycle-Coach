@@ -17,184 +17,73 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
+            android:layout_height="0px"
+            android:layout_weight="1"
             android:orientation="horizontal">
-
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:background="@drawable/gear2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="75dp"
-                android:layout_marginLeft="25dp"
-                android:gravity="center_vertical"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:id="@+id/head"/>
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/muscle"/>
+            <Button
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Personal Goals"
+                android:textSize="12pt"
+                android:background="#cfe2f3"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/personalGoalsButton"/>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:text="I'd like to ride: "
-            android:textAlignment="center"
-            android:textSize="30dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:orientation="horizontal">
-
-            <Button
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#cfe2f3"
-                android:text="-"
-                android:textSize="36dp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/decMiles"/>
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="#ffffff"
-                android:textSize="30sp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/milesText"/>
-
-            <Button
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:backgroundTint="#cfe2f3"
-                android:text="+"
-                android:textSize="36sp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/incMiles"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0px"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="mile(s)"
-                android:textSize="30dp"/>
+                android:layout_weight="1"
+                android:background="@drawable/bike"/>
+            <Button
+                android:layout_width="0px"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Cycling Goals"
+                android:textSize="12pt"
+                android:background="#cfe2f3"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/cyclingGoalsButton"/>
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <Button
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#cfe2f3"
-                android:text="-"
-                android:textSize="36dp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/decFreq"/>
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="#ffffff"
-                android:textSize="30sp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/freqText"/>
-
-            <Button
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:backgroundTint="#cfe2f3"
-                android:text="+"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:textSize="36sp"
-                android:id="@+id/incFreq"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_height="0px"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+            <ImageView
+                android:layout_width="0px"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="time(s)"
-                android:textSize="30dp" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:gravity="center_vertical"
-            android:text="every"
-            android:textAlignment="center"
-            android:textSize="30sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:orientation="horizontal">
-
+                android:layout_weight="1"
+                android:background="@drawable/graph"/>
             <Button
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#cfe2f3"
-                android:text="-"
-                android:textSize="36dp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/decDays"/>
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:background="#ffffff"
-                android:textSize="30sp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/daysText"/>
-
-            <Button
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
-                android:backgroundTint="#cfe2f3"
-                android:text="+"
-                android:textSize="36sp"
-                android:gravity="center_vertical"
-                android:textAlignment="gravity"
-                android:id="@+id/incDays"/>
-
-            <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0px"
                 android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:text="day(s)"
-                android:textSize="30dp" />
+                android:layout_weight="3"
+                android:text="Track Your Progress"
+                android:textSize="12pt"
+                android:background="#cfe2f3"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/progressButton"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
 
             <Button
                 android:id="@+id/gearButton"
@@ -232,8 +121,6 @@
                 android:onClick="onClick" />
 
         </LinearLayout>
-
-
     </LinearLayout>
 
 

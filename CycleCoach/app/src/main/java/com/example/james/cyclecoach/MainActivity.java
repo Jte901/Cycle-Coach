@@ -31,6 +31,7 @@ import org.xml.sax.InputSource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.Serializable;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
@@ -63,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Document doc;
     String lance_state;
     boolean openLanceMood;
+    CommHandler commHandler;
 
     private NfcAdapter mNfcAdapter;
 
@@ -108,11 +110,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = getIntent();
         lance_state = intent.getStringExtra("LANCE_STATE");
         openLanceMood = intent.getBooleanExtra("OPEN_MOOD", false);
+        if (intent.getSerializableExtra("DATA") != null) {
+            data = (UserData) intent.getSerializableExtra("DATA");
+            data.name = intent.getStringExtra("USER_NAME");
+        }
+        else {
+            data = new UserData();
+            data.name = intent.getStringExtra("USER_NAME");
+        }
+
+
         _layout = (RelativeLayout) findViewById(R.id.main_activity_layout);
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
-        data = new UserData();
-        data.name = intent.getStringExtra("USER_NAME");
-
         _eyeButton = (Button) findViewById(R.id.eyeButton);
         _gearButton = (Button) findViewById(R.id.gearButton);
         _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
@@ -126,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _whistleButton.setOnClickListener(this);
         _hexKeyButton.setOnClickListener(this);
 
+        commHandler = new CommHandler(this);
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
 
         if (mNfcAdapter == null) {
@@ -142,15 +152,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case "blue":
                 lance.setImageDrawable(getDrawable(R.drawable.lance));
                 _dialogTextView.setText("What can I help you with, " + this.data.name + "?");
+                commHandler.sendToWatch(0);
+                break;
+            case "green":
+                commHandler.sendToWatch(1);
                 break;
             case "orange":
                 lance.setImageDrawable(getDrawable(R.drawable.lance_orange));
                 _dialogTextView.setText("It's been a while, " + this.data.name + "... you should ride soon.");
+                commHandler.sendToWatch(2);
 
                 break;
             case "red":
                 lance.setImageDrawable(getDrawable(R.drawable.lance_red));
                 _dialogTextView.setText("It's been way too long, " + this.data.name + ". You need to ride!");
+                commHandler.sendToWatch(3);
                 break;
         }
     }
@@ -186,20 +202,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        data.name = getIntent().getExtras().getString("NAME");
-        data.frequency = getIntent().getExtras().getInt("FREQUENCY");
-        data.days = getIntent().getExtras().getInt("DAYS");
-        data.distance = getIntent().getExtras().getFloat("DISTANCE");
-        data.firstTime = getIntent().getExtras().getBoolean("FIRST_TIME");
+        data = (UserData)getIntent().getSerializableExtra("DATA");
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        outState.putString("NAME", data.name);
-        outState.putFloat("DISTANCE", data.distance);
-        outState.putInt("DAYS", data.days);
-        outState.putInt("FREQUENCY", data.frequency);
-        outState.putBoolean("FIRST_TIME", data.firstTime);
+        outState.putSerializable("DATA", data);
+        outState.putString("LANCE_STATE", lance_state);
     }
 
     @Override
@@ -212,6 +221,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             if (openLanceMood) {
                 openLanceMood = false;
+                data = (UserData)getIntent().getSerializableExtra("DATA");
+                lance_state = getIntent().getExtras().getString("LANCE_STATE");
                 Intent intent = new Intent(this, LanceMood.class);
                 intent.putExtra("lance_base_mood", lance_state);
                 intent.putExtra("username", this.data.name);
@@ -253,11 +264,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.gearButton:
                 Intent gearIntent = new Intent(this, GearActivity.class);
-                gearIntent.putExtra("NAME", data.name);
-                gearIntent.putExtra("DISTANCE", data.distance);
-                gearIntent.putExtra("DAYS", data.days);
-                gearIntent.putExtra("FREQUENCY", data.frequency);
-                gearIntent.putExtra("FIRST_TIME", data.firstTime);
+                gearIntent.putExtra("DATA", data);
+                gearIntent.putExtra("LANCE_STATE", lance_state);
                 startActivity(gearIntent);
                 break;
             case R.id.waterBottleButton:
@@ -265,10 +273,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.whistleButton:
                 Intent progressIntent = new Intent(this, ProgressActivity.class);
+                progressIntent.putExtra("DATA", data);
+                progressIntent.putExtra("LANCE_STATE", lance_state);
                 startActivity(progressIntent);
                 break;
             case R.id.hexKeyButton:
                 Intent hexKeyIntent = new Intent(this, HexKeyActivity.class);
+                hexKeyIntent.putExtra("DATA", data);
+                hexKeyIntent.putExtra("LANCE_STATE", lance_state);
                 startActivity(hexKeyIntent);
                 break;
             case R.id.eyeButton:

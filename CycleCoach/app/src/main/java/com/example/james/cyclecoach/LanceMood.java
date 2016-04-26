@@ -24,6 +24,8 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 public class LanceMood extends AppCompatActivity implements View.OnClickListener {
     ImageView lance;
+    UserData data;
+    CommHandler commHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,10 +36,12 @@ public class LanceMood extends AppCompatActivity implements View.OnClickListener
         lance.setOnClickListener(this);
         Intent intent = getIntent();
         String lance_mood = intent.getStringExtra("lance_base_mood");
-        String name = intent.getStringExtra("username");
+        data = (UserData)intent.getSerializableExtra("DATA");
+        String name = data.name;
         int currhour;
         int lasthour;
         Document doc = null;
+        commHandler = new CommHandler(this);
         File nameFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "CycleCoach_name.xml");
         if (nameFile.exists()) {
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
@@ -71,9 +75,11 @@ public class LanceMood extends AppCompatActivity implements View.OnClickListener
                     } else if (currhour > 4 && currhour <= 14) { //5am - 2pm
                         text.setText("Lets go for a ride!");
                         lance.setImageDrawable(getDrawable(R.drawable.lance_green_goride));
+                        commHandler.sendToWatch(0);
                     } else if (currhour > 14 && currhour <= 18) { // 2pm - 6pm
                         text.setText("I think its a good time to go for a ride!");
                         lance.setImageDrawable(getDrawable(R.drawable.lance_yellow));
+                        commHandler.sendToWatch(1);
                     } else if (currhour > 18 && currhour <= 20) { //6pm - 8pm
                         text.setText("It's getting kinda late, you should get that ride in!");
                         lance.setImageDrawable(getDrawable(R.drawable.lance_getting_late));
@@ -84,6 +90,7 @@ public class LanceMood extends AppCompatActivity implements View.OnClickListener
                 } else {
                     text.setText("Good work riding today!");
                     lance.setImageDrawable(getDrawable(R.drawable.lance_goodjob));
+                    commHandler.sendToWatch(0);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
