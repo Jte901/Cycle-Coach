@@ -1,12 +1,14 @@
 package com.example.james.cyclecoach;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
 
 public class IntroductionActivity extends AppCompatActivity implements View.OnClickListener,
         IntroductionFragment.OnFragmentInteractionListener, NameFragment.OnFragmentInteractionListener{
@@ -15,6 +17,9 @@ public class IntroductionActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_introduction);
+        Window window = this.getWindow();
+        window.setStatusBarColor(Color.parseColor("#000000"));
+
         Fragment fragment = null;
         Class fragmentClass = IntroductionFragment.class;
         try {

@@ -40,7 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@drawable/gear"
+            android:background="@drawable/lance_crank_wheel"
             android:onClick="onClick" />
 
         <Button
@@ -49,7 +49,7 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@drawable/waterbottle"
+            android:background="@drawable/lance_fork"
             android:onClick="onClick" />
 
         <Button
@@ -58,7 +58,7 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@drawable/whistle"
+            android:background="@drawable/lance_whistle"
             android:onClick="onClick" />
 
         <Button
@@ -67,7 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
-            android:background="@drawable/hexkey"
+            android:background="@drawable/lance_pump"
             android:onClick="onClick" />
 
     </LinearLayout>

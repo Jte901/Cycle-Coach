@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -33,6 +34,9 @@ public class ProgressActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_progress);
+
+        Window window = this.getWindow();
+        window.setStatusBarColor(Color.parseColor("#000000"));
 
         // initialize our XYPlot reference:
         _plot = (XYPlot) findViewById(R.id.plot);

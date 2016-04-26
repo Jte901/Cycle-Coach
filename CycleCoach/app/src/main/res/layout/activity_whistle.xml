@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_height="match_parent"
                 android:layout_width="0px"
-                android:src="@drawable/whistle"
+                android:src="@drawable/lance_whistle"
                 android:adjustViewBounds="true"
                 android:layout_weight="1"/>
             <TextView
@@ -45,7 +45,7 @@
             <ImageView
                 android:layout_height="match_parent"
                 android:layout_width="0px"
-                android:src="@drawable/waterbottle"
+                android:src="@drawable/lance_fork"
                 android:adjustViewBounds="true"
                 android:layout_weight="1"/>
             <TextView
@@ -68,7 +68,7 @@
             <ImageView
                 android:layout_height="match_parent"
                 android:layout_width="0px"
-                android:src="@drawable/gear"
+                android:src="@drawable/lance_crank_wheel"
                 android:adjustViewBounds="true"
                 android:layout_weight="1"/>
             <TextView

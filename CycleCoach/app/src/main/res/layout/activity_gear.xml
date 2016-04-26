@@ -21,10 +21,61 @@
             android:layout_weight="1"
             android:orientation="horizontal">
             <ImageView
+<<<<<<< HEAD
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@drawable/muscle"/>
+=======
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:background="@drawable/lance_crank_wheel" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_marginLeft="25dp"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:id="@+id/head"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:text="I'd like to ride: "
+            android:textAlignment="center"
+            android:textSize="30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:orientation="horizontal">
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="#cfe2f3"
+                android:text="-"
+                android:textSize="36dp"
+                android:gravity="center_vertical"
+                android:textAlignment="gravity"
+                android:id="@+id/decMiles"/>
+
+            <TextView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:textSize="30sp"
+                android:gravity="center_vertical"
+                android:textAlignment="gravity"
+                android:id="@+id/milesText"/>
+
+>>>>>>> 5a1b209a22c27a89858fea930b3e9614ef352b05
             <Button
                 android:layout_width="0px"
                 android:layout_height="match_parent"
@@ -78,6 +129,7 @@
                 android:id="@+id/progressButton"/>
         </LinearLayout>
 
+<<<<<<< HEAD
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,6 +173,52 @@
                 android:onClick="onClick" />
 
         </LinearLayout>
+=======
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/gearButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/lance_crank_wheel"/>
+
+        <Button
+            android:id="@+id/waterBottleButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/lance_fork"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/whistleButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/lance_whistle"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/hexKeyButton"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@drawable/lance_pump"
+            android:onClick="onClick" />
+
+>>>>>>> 5a1b209a22c27a89858fea930b3e9614ef352b05
     </LinearLayout>
 
 
