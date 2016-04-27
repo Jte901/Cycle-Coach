@@ -1,9 +1,11 @@
 package com.example.james.cyclecoach;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,6 +23,9 @@ public class GearActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gear);
+        Window window = this.getWindow();
+        window.setStatusBarColor(Color.parseColor("#000000"));
+
         personalGoalsButton = (Button)findViewById(R.id.personalGoalsButton);
         personalGoalsButton.setOnClickListener(this);
         cyclingGoalsButton = (Button)findViewById(R.id.cyclingGoalsButton);
