@@ -254,13 +254,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(gearIntent);
                 break;
             case R.id.waterBottleButton:
-                _dialogTextView.setText("You clicked the water bottle!");
+                Intent foodIntent = new Intent(this, ForkActivity.class);
+                foodIntent.putExtra("DATA", data);
+                foodIntent.putExtra("LANCE_STATE", lance_state);
+                startActivity(foodIntent);
                 break;
             case R.id.whistleButton:
-                Intent progressIntent = new Intent(this, ProgressActivity.class);
-                progressIntent.putExtra("DATA", data);
-                progressIntent.putExtra("LANCE_STATE", lance_state);
-                startActivity(progressIntent);
                 break;
             case R.id.hexKeyButton:
                 Intent hexKeyIntent = new Intent(this, HexKeyActivity.class);
@@ -274,7 +273,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     _dialogTextView.setText("Stop poking my eye!");
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         lance.setImageDrawable(getDrawable(R.drawable.lance_eyepoked));
-                        fixEye();
+                        fixEye(this.data.name);
                     }
                     _eyePressCount = 0;
                 }
@@ -283,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private void fixEye() {
+    private void fixEye(final String name) {
         try {
             new Timer().schedule(new TimerTask() {
                 @Override
@@ -293,7 +292,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         public void run() {
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                                 lance.setImageDrawable(getDrawable(R.drawable.lance));
-                                _dialogTextView.setText("");
+                                _dialogTextView.setText("What can I help you with, " + name + "?");
                             }
                         }
                     });
