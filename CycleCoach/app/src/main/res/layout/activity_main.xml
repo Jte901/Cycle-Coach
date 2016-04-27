@@ -46,45 +46,49 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageView
             android:id="@+id/gearButton"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
             android:background="@drawable/lance_crank_wheel"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:scaleType="fitCenter" />
 
-        <Button
+        <ImageView
             android:id="@+id/waterBottleButton"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
             android:background="@drawable/lance_fork"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:scaleType="fitCenter" />
 
-        <Button
+        <ImageView
             android:id="@+id/whistleButton"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:background="@drawable/lance_whistle" />
+            android:adjustViewBounds="true"
+            android:background="@drawable/lance_whistle"
+            android:scaleType="fitCenter" />
 
-        <Button
+        <ImageView
             android:id="@+id/hexKeyButton"
-            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
-            android:layout_height="75dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
+            android:adjustViewBounds="true"
             android:background="@drawable/lance_pump"
-            android:onClick="onClick" />
+            android:onClick="onClick"
+            android:scaleType="fitCenter" />
 
     </LinearLayout>
 </RelativeLayout>

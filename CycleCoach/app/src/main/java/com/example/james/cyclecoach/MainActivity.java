@@ -45,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RelativeLayout _layout;
     TextView _dialogTextView;
     ImageView lance;
-    Button _eyeButton, _gearButton, _waterBottleButton, _whistleButton, _hexKeyButton;
+    Button _eyeButton;
+    ImageView _gearButton, _waterBottleButton, _whistleButton, _hexKeyButton;
     File nameFile;
     int _eyePressCount;
     UserData data;
@@ -111,10 +112,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         _layout = (RelativeLayout) findViewById(R.id.main_activity_layout);
         _dialogTextView = (TextView) findViewById(R.id.dialogTextView);
         _eyeButton = (Button) findViewById(R.id.eyeButton);
-        _gearButton = (Button) findViewById(R.id.gearButton);
-        _waterBottleButton = (Button) findViewById(R.id.waterBottleButton);
-        _whistleButton = (Button) findViewById(R.id.whistleButton);
-        _hexKeyButton = (Button) findViewById(R.id.hexKeyButton);
+        _gearButton = (ImageView) findViewById(R.id.gearButton);
+        _waterBottleButton = (ImageView) findViewById(R.id.waterBottleButton);
+        _whistleButton = (ImageView) findViewById(R.id.whistleButton);
+        _hexKeyButton = (ImageView) findViewById(R.id.hexKeyButton);
         _eyePressCount = 0;
 
         _eyeButton.setOnClickListener(this);
@@ -129,13 +130,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Window window = this.getWindow();
         window.setStatusBarColor(Color.parseColor("#000000"));
 
-        if (mNfcAdapter == null) {
+        if (mNfcAdapter != null) {
+            if (!mNfcAdapter.isEnabled()) {
 
+            }
         }
 
-        if (!mNfcAdapter.isEnabled()) {
-
-        }
 
         handleIntent(getIntent());
 
@@ -225,7 +225,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
          * It's important, that the activity is in the foreground (resumed). Otherwise
          * an IllegalStateException is thrown.
          */
-        setupForegroundDispatch(this, mNfcAdapter);
+        if (mNfcAdapter != null)
+            setupForegroundDispatch(this, mNfcAdapter);
     }
 
     @Override
@@ -233,7 +234,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         /**
          * Call this before onPause, otherwise an IllegalArgumentException is thrown as well.
          */
-        stopForegroundDispatch(this, mNfcAdapter);
+        if (mNfcAdapter != null)
+            stopForegroundDispatch(this, mNfcAdapter);
 
         super.onPause();
     }
