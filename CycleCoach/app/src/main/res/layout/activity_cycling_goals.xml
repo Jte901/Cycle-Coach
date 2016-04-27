@@ -25,7 +25,7 @@
             <ImageView
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:background="@drawable/gear2" />
+                android:background="@drawable/lance_crank_wheel" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -215,7 +215,7 @@
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:background="@drawable/gear3"/>
+                android:background="@drawable/lance_crank_wheel"/>
 
             <Button
                 android:id="@+id/waterBottleButton"
@@ -223,7 +223,7 @@
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:background="@drawable/waterbottle"
+                android:background="@drawable/lance_fork"
                 android:onClick="onClick" />
 
             <Button
@@ -232,7 +232,7 @@
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:background="@drawable/whistle"
+                android:background="@drawable/lance_whistle"
                 android:onClick="onClick" />
 
             <Button
@@ -241,7 +241,7 @@
                 android:layout_width="0dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
-                android:background="@drawable/hexkey"
+                android:background="@drawable/lance_pump"
                 android:onClick="onClick" />
 
         </LinearLayout>

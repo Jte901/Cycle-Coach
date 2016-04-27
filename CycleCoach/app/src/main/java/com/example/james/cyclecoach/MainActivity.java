@@ -26,14 +26,6 @@ import android.widget.TextView;
 import org.w3c.dom.Document;
 
 import java.io.File;
-<<<<<<< HEAD
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.Serializable;
-import java.io.StringReader;
-import java.io.StringWriter;
-=======
->>>>>>> 5a1b209a22c27a89858fea930b3e9614ef352b05
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Timer;
